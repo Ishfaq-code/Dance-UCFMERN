@@ -1,15 +1,12 @@
-import Hero from './components/Hero'
-import Navbar from './components/Navbar'
+import Garage from "./Pages/Garage"
+
 
 function App() {
 
 
   return (
     <>
-      <div>
-        <Navbar />
-        <Hero />
-      </div>
+    <Garage />
       
     </>
   )
