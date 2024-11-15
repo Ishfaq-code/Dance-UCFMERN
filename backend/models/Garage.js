@@ -3,9 +3,9 @@ import mongoose from "mongoose";
 
 const sideSchema = new mongoose.Schema({
     reservedBy: String,  // Club doing the reservation
-    startTime: Date,
-    endTime: Date
-  });
+    dateWhenCreated: Date,
+    hourOfReservation: Number,
+});
 
 const floorSchema = new mongoose.Schema({
   floorNumber: Number,
