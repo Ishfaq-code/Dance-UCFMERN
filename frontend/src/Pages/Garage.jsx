@@ -1,31 +1,53 @@
 import {useEffect} from 'react'
 import GarageCard from '../components/GarageCard'
+import { useState } from 'react'
 
 const Garage = () => {
+// Variable for storing and setting data
+const [mainData, setMainData] = useState([]);
   
+  // useEffect to get the data from API
   useEffect(() => {
+    // Async fucntion to fetch data using try and catch
     const garageData = async () => {
       try{
-        const response =  await fetch("/api/garages");
+        const response =  await fetch("/api/garages"); // fetching from link
         if(!response){
-          console.log("No Data");
+          console.log("No Data"); // if response is empty no data
         }
-        const data = await response.json();
+        const allGarageData = await response.json(); // Converting data into JSON and storing into a variable
+        console.log(allGarageData.data);
+        setMainData(allGarageData.data); // setting data to all data
       }
+      // Catching errors
       catch(error){
         console.error("There is an error", error)
       }
     }
 
+    // Catching the actual function
     garageData();
-  }, [])
+  }, []);
+
+
+
+  
+
+  
 
 
   return (
     <>
-      <GarageCard title={"Garage A"} section1Text={"Floor 1"} section2Text={"Floor 2"} section3Text={"Socket"} />
-
-      
+    
+      <div>
+      <ul>
+        {mainData.map(item => (
+          <li key={item._id}><GarageCard title={item.name} floors={item.floors} /></li>
+        ))}
+      </ul>
+    </div>
+    
+    
     </>
   )
 }
