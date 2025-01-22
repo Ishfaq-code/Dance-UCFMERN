@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react'
-
+import React, { useEffect, useState } from 'react'
 const GarageCard = ({ title, floors}) => {
- 
+
+// Managing modal
+
+
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6 max-w-sm mx-auto mt-3 hover:cursor-pointer hover:scale-110 transition-transform duration-300 ">
       {/* Title */}
       <h2 className="text-2xl text-center font-semibold mb-4">{title}</h2>
-
       {
         floors.map((item, index) => (
           <div className="flex justify-between items-center mb-3" key={item._id}>
@@ -23,6 +24,7 @@ const GarageCard = ({ title, floors}) => {
 
 
       {/* Section 3 */}
+      
       
     </div>
   );

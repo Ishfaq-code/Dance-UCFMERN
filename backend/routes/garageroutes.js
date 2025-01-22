@@ -20,7 +20,7 @@ router.get("/:id", async(req, res) => {
     try{
         const {id} = req.params;
         const garage = await Garages.findById(id);
-        return res.status(200).json(garage);
+        return res.status(200).json(garage); 
     }
     catch(error){
         console.error("Error fetching garage", error.message);

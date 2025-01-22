@@ -1,6 +1,7 @@
 import {useEffect} from 'react'
 import GarageCard from '../components/GarageCard'
 import { useState } from 'react'
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react';
 
 const Garage = () => {
 // Variable for storing and setting data
@@ -40,12 +41,20 @@ const [mainData, setMainData] = useState([]);
     <>
     
       <div>
-      <ul>
-        {mainData.map(item => (
-          <li key={item._id}><GarageCard title={item.name} floors={item.floors} /></li>
-        ))}
-      </ul>
+      <SignedOut>
+          <SignInButton />
+        </SignedOut>
+        <SignedIn>
+        <UserButton></UserButton>
+        <ul>
+            {mainData.map(item => (
+              <li key={item._id}><GarageCard title={item.name} floors={item.floors} /></li>
+            ))}
+          </ul>
+        </SignedIn> 
+     
     </div>
+    
     
     
     </>
